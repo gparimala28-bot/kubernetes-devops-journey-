@@ -1,0 +1,24 @@
+# IDE
+.vscode/
+.idea/
+
+# Environment
+.env*
+
+# Logs
+*.log
+
+# Kubernetes Secrets
+*secret*.yaml
+
+# Kubernetes configs
+kubeconfig
+*.pem
+*.key
+*.crt
+
+# Dependencies
+node_modules/
+
+# OS
+.DS_Store
