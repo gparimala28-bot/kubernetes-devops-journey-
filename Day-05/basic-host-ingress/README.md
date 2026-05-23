@@ -40,9 +40,7 @@ Ingress is a Kubernetes object used to expose applications to the outside world 
 Instead of assigning every application its own public IP or port, Ingress acts like a smart traffic manager that routes requests to the correct Service inside the cluster.
 
 # 🖼️ Kubernetes Ingress Architecture
-```md
 ![Kubernetes Ingress Architecture](./diagrams/ingress-architecture.png)
-```
 
 # ⚙️ Main Components of Ingress
 
