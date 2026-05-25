@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+
+metadata:
+  name: hello-ingress
+
+spec:
+  ingressClassName: nginx
+
+  tls:
+  - hosts:
+    - myflaskapp.in
+
+    secretName: app-secret
+    
+  rules:
+  - host: myflaskapp.in
+
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+
+        backend:
+          service:
+            name: flask-service
+
+            port:
+              number: 80
