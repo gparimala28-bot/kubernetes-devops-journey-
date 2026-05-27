@@ -1,11 +1,13 @@
-☸️ Kubernetes Namespaces and RBAC (Role-Based Access Control)
+## ☸️ Kubernetes Namespaces and RBAC (Role-Based Access Control)
 
 # 📦 KUBERNETES NAMESPACES
 
 🧠 Why Do We Need Namespaces?
+
 In Kubernetes, multiple teams and applications often share the same cluster.
 
 Without Namespaces:
+
 ❌ Resource naming conflicts  
 ❌ Difficult environment separation  
 ❌ Poor resource organization  
@@ -18,7 +20,7 @@ A Namespace is a logical partition inside a Kubernetes cluster used to organize 
 
 Resources inside one Namespace are separated from resources in another Namespace.
 
- 🚀 Kubernetes Namespace Architecture
+# 🚀 Kubernetes Namespace Architecture
 
 The following diagram explains how Namespaces logically separate resources inside a Kubernetes cluster.
 
@@ -109,7 +111,7 @@ It controls:
 • Which resources they can access  
 • Where permissions apply 
 
-🚀 Kubernetes RBAC Architecture
+# 🚀 Kubernetes RBAC Architecture
 
 The following diagram explains how RBAC controls access and permissions for users, ServiceAccounts, and workloads inside a Kubernetes cluster.
 
