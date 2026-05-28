@@ -1,4 +1,4 @@
-## ☸️ Kubernetes ConfigMaps & Secrets
+# ☸️ Kubernetes ConfigMaps & Secrets
 
 ## Overview
 
@@ -15,6 +15,7 @@ Hardcoding configuration inside containers creates several problems:
 Kubernetes solves this problem using:
 - ConfigMaps → store non-sensitive configuration
 - Secrets → store sensitive application data securely
+  
 This approach helps applications become:
 - Portable
 - Scalable
@@ -31,13 +32,13 @@ This helps applications:
 - Support cloud-native deployment practices
 - Improve security and maintainability
 
-# 🚀 ConfigMaps and Secrets architecture
+### 🚀 ConfigMaps and Secrets architecture
 
 The following diagram explains how ConfigMaps and Secrets interact with Pods and the Kubernetes API Server.
 
 ![ConfigMaps and Secrets Flow](diagrams/configmaps-secrets-architecture.png)
 
-# 🏗️ Architecture / Flow
+### 🏗️ Architecture / Flow
 
 Application Deployment
 ↓
@@ -51,9 +52,9 @@ Application Reads Configuration
 ↓
 Dynamic Configuration Management
 
-# 🏗️ Key Components
+### 🏗️ Key Components
 
-ConfigMap-Stores non-sensitive configuration data as key-value pairs.
+** ConfigMap-Stores non-sensitive configuration data as key-value pairs.
 
 Examples:
 - Application settings
@@ -61,7 +62,7 @@ Examples:
 - Feature flags
 - Configuration files
 
-Secret-Stores sensitive information securely.
+** Secret-Stores sensitive information securely.
 
 Examples:
 - Database passwords
@@ -69,19 +70,19 @@ Examples:
 - OAuth tokens
 - TLS certificates
 
-Environment Variables-Inject configuration values during container startup.
+** Environment Variables-Inject configuration values during container startup.
 
-Volume Mounts-Mount ConfigMap or Secret data as files inside containers.
+** Volume Mounts-Mount ConfigMap or Secret data as files inside containers.
 
-Kubelet-Runs on worker nodes and automatically updates mounted ConfigMaps and Secrets.
+** Kubelet-Runs on worker nodes and automatically updates mounted ConfigMaps and Secrets.
 
-etcd-Kubernetes database that stores cluster configuration and resource state.
+** etcd-Kubernetes database that stores cluster configuration and resource state.
 
-RBAC-Controls access permissions for Kubernetes resources including Secrets.
+** RBAC-Controls access permissions for Kubernetes resources including Secrets.
 
-🧱 Hands-On Implementation
+### 🧱 Hands-On Implementation
 
-⚙️ ConfigMap Implementation
+### ⚙️ ConfigMap Implementation
 
 1. Created ConfigMap Successfully
 
@@ -119,7 +120,7 @@ Environment variables are loaded only during container startup.
 
 👉 Pod restart or rolling restart is required to load updated values.
 
-# 🔐 Secret Implementation
+ ### 🔐 Secret Implementation
 
  1. Created Kubernetes Secret
 ```
@@ -169,27 +170,29 @@ cat /etc/secret-data/DB_PASSWORD
 
 👉 Preferred approach for dynamic and production-grade secret management.
 
-❌ Problems Faced
+### ❌ Problems Faced
 
-1. ConfigMap Updates Not Reflecting
+ 1. ConfigMap Updates Not Reflecting
 
-Fix- Used rolling restart for Deployment and verified updated environment variables successfully
+    Fix- Used rolling restart for Deployment and verified updated environment variables successfully
 
-2.Problem — Secret Update Delay
+ 2. Problem — Secret Update Delay
 
-Fix - Waited for Kubelet synchronization, re-entered Pod and verified updated Secret successfully
+    Fix - Waited for Kubelet synchronization, re-entered Pod and verified updated Secret successfully
 
-🔑 Key Learnings
-✔ ConfigMaps store non-sensitive configuration data
-✔ Secrets store sensitive application data securely
-✔ Environment variables require Pod restart after updates
-✔ Volume mounts support automatic configuration updates
-✔ Base64 encoding is NOT encryption
-✔ RBAC improves Secret security
-✔ Kubernetes supports externalized configuration management
-✔ Volume mounts are preferred in production environments
+### 🔑 Key Learnings
 
-💡 Final Insight
+- ConfigMaps store non-sensitive configuration data
+- Secrets store sensitive application data securely
+- Environment variables require Pod restart after updates
+- Volume mounts support automatic configuration updates
+- Base64 encoding is NOT encryption
+- RBAC improves Secret security
+- Kubernetes supports externalized configuration management
+- Volume mounts are preferred in production environments
+
+### 💡 Final Insight
+
 Kubernetes ConfigMaps and Secrets provide secure and flexible configuration management for cloud-native applications.
 For production environments:
 - Use ConfigMaps for non-sensitive configuration
@@ -199,4 +202,5 @@ For production environments:
 - Rotate secrets regularly to improve security
 - Avoid hardcoding credentials inside applications
 - Use external secret management tools in enterprise environments
+  
 👉 Proper configuration management is essential for scalable, secure, and production-ready Kubernetes deployments.
