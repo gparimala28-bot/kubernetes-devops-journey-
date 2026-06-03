@@ -1,0 +1,13 @@
+replicaCount: 2
+
+image:
+  repository: parimala25/flask-k8s-demo
+  tag: v2
+  pullPolicy: Always
+
+service:
+  type: ClusterIP
+  port: 5000
+
+config:
+  APP_ENV: dev
