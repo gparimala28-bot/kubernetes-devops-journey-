@@ -1,0 +1,162 @@
+## 📊 Kubernetes Monitoring with Prometheus & Grafana
+
+### 🧠 Why Monitoring is Required
+
+Deploying applications to Kubernetes is only the first step.
+
+Once applications are running, operators need visibility into:
+
+Application health
+Resource utilization
+Pod failures
+CPU and Memory consumption
+Cluster performance
+Alerting and troubleshooting
+
+Without monitoring, issues may go unnoticed until users are impacted.
+
+Monitoring tools help engineers proactively identify problems and maintain application reliability.
+
+### 🧠 Core Concept
+
+Monitoring in Kubernetes typically combines:
+
+• Prometheus → Collects and stores metrics
+• Grafana → Visualizes metrics through dashboards
+• kube-state-metrics → Exposes Kubernetes object metrics
+• Alertmanager → Sends alerts when issues occur
+
+Together they provide complete cluster visibility.
+
+### 🚀 Monitoring Architecture
+
+The following diagram illustrates how Helm deploys Prometheus and Grafana to monitor Kubernetes workloads.
+
+                    Kubernetes Cluster
+                            │
+                            ▼
+
+                         Helm
+                            │
+        ┌───────────────────┴───────────────────┐
+        ▼                                       ▼
+
+    Prometheus                            Grafana
+        │                                    │
+        ▼                                    ▼
+
+   Collects Metrics                 Visualizes Metrics
+        │                                    │
+        ▼                                    ▼
+
+  Kubernetes Nodes                 Monitoring Dashboards
+  Kubernetes Pods
+  Applications
+
+### 🏗️ Key Components
+
+1.Prometheus is an open-source monitoring tool that continuously collects metrics from Kubernetes clusters, nodes, pods, and applications.
+- It stores this data as time-series metrics and allows users to query, analyze, and create alerts using PromQL.
+
+  Collects:
+- CPU usage
+- Memory usage
+- Pod metrics
+- Node metrics
+- Application metrics
+
+2. Grafana -Grafana is a visualization and dashboarding tool that connects to Prometheus as a data source. 
+- It transforms raw metrics into interactive graphs, charts, and dashboards, making it easy to understand cluster and application performance.
+
+Displays:
+
+- CPU utilization
+- Memory consumption
+- Pod health
+- Cluster performance
+
+3. kube-state-metrics-Exposes Kubernetes object metrics such as:
+
+• Deployments
+• Pods
+• Replica counts
+• StatefulSets
+• DaemonSets
+
+4. Alertmanager-Sends notifications through:
+
+• Email
+• Slack
+• Microsoft Teams
+• PagerDuty
+
+### Important Concepts
+
+1.Metrics-Measurements describing system health.
+
+2.Time Series Data-Metrics are stored with timestamps, enabling historical analysis and trend monitoring.
+
+3.Scraping-Prometheus periodically pulls metrics from targets.
+
+Example:
+
+Prometheus
+      │
+      ▼
+
+Application Metrics Endpoint
+
+Usually exposed through /metrics
+
+### What I Implemented
+
+• Created and deployed a custom Flask application using a Helm Chart
+
+• Configured Deployment, Service, ConfigMap, and Values files for the application 
+
+• Installed Prometheus and Grafana on Kubernetes using Helm
+
+• Connected Grafana to Prometheus as a monitoring data source
+
+• Verified application metrics through the /metrics endpoint
+
+• Confirmed Prometheus successfully scraped both Kubernetes and application metrics
+
+• Queried custom application metrics using PromQL
+
+• Built Grafana dashboards to visualize application and cluster health metrics
+
+• Simulated application traffic and observed real-time metric updates in Grafana
+
+• Monitored Kubernetes resources, pod health, CPU usage, memory usage, and request rates through Grafana dashboards
+
+### Key Learnings
+
+• Prometheus is the standard monitoring solution for Kubernetes
+
+• Grafana provides visualization for Prometheus metrics
+
+• Prometheus stores metrics as time-series data
+
+• kube-state-metrics provides detailed Kubernetes object metrics
+
+• Prometheus uses a pull-based scraping model
+
+• Helm simplifies Prometheus and Grafana deployment
+
+• Applications must expose a /metrics endpoint for monitoring
+
+• Grafana dashboards provide real-time cluster visibility
+
+• Monitoring should include both infrastructure and application metrics
+
+• Alertmanager enables proactive incident response
+
+• Monitoring is a critical component of production Kubernetes environments
+
+### 💡 Final Insight
+
+Prometheus, Grafana, kube-state-metrics, and Alertmanager together form a complete Kubernetes observability stack.
+
+By monitoring both cluster infrastructure and application-level metrics, teams can quickly detect issues, improve reliability, and maintain production-ready Kubernetes environments.
+
