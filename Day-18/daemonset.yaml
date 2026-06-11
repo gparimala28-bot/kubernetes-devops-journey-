@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: monitoring-agent
+
+spec:
+  selector:
+    matchLabels:
+      app: monitor
+
+  template:
+    metadata:
+      labels:
+        app: monitor
+
+    spec:
+
+      tolerations:
+      - key: "gpu"
+        operator: "Equal"
+        value: "true"
+        effect: "NoSchedule"
+
+      containers:
+      - name: monitor
+        image: nginx
